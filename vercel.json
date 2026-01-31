@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/job-tracker",
+      "source": "https://jaidenanders.dev/job-tracker",
       "destination": "https://job-tracker-theta-drab.vercel.app"
     },
     {
