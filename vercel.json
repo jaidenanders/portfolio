@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/job-tracker",
-      "destination": "https://job-tracker-theta-drab.vercel.app"
+      "destination": "https://job-tracker-theta-drab.vercel.app/login"
     },
     {
       "source": "/job-tracker/:path*",
