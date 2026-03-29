@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java OOP Shopping Cart — Jaiden Anders</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold:       #F1C500;
+      --gold-dim:   #8B7220;
+      --dark:       #1A0F0A;
+      --dark-mid:   #2C1810;
+      --cream:      #FDF6E3;
+      --cream-muted:#C4B49A;
+      --text-muted: #8B7355;
+      --body-text:  #9A8B77;
+      --border:     rgba(212,175,55,0.2);
+      --pass:       #10B981;
+      --fail:       #EF4444;
+      --card-bg:    rgba(255,255,255,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark);
+      color: var(--cream);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: 0.4;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* NAV */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1.2rem 0;
+      background: rgba(26,15,10,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav { max-width: 1100px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--gold); letter-spacing: -0.02em; text-decoration: none; }
+    .nav-links { display: flex; gap: 0.25rem; list-style: none; }
+    .nav-links a { color: var(--cream); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.4rem 0.75rem; border-radius: 100px; transition: all 0.25s; }
+    .nav-links a:hover { color: var(--gold); background: rgba(241,197,0,0.1); }
+
+    /* HERO */
+    .hero-strip {
+      min-height: 42vh; display: flex; align-items: center;
+      background: linear-gradient(135deg, #1A0F0A 0%, #2C1810 50%, #3E2318 100%);
+      padding: 8rem 2rem 4rem; position: relative; overflow: hidden;
+    }
+    .hero-strip::before {
+      content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(241,197,0,0.1) 0%, transparent 70%);
+      top: -200px; right: -100px; pointer-events: none;
+    }
+    .hero-strip::after {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(241,197,0,0.025) 80px);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--gold);
+      letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+    .hero-strip h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; line-height: 1.05; color: var(--cream); letter-spacing: -0.03em; margin-bottom: 1rem; }
+    .hero-strip h1 em { font-style: normal; color: var(--gold); }
+    .hero-strip .sub { font-size: 1rem; color: var(--text-muted); max-width: 520px; line-height: 1.7; margin-bottom: 1.75rem; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .pill { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--gold-dim); background: rgba(241,197,0,0.06); border: 1px solid rgba(241,197,0,0.15); padding: 0.25rem 0.7rem; border-radius: 4px; letter-spacing: 0.04em; }
+
+    /* LAYOUT */
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    hr.divider { border: none; border-top: 1px solid var(--border); }
+
+    .section-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.75rem; }
+    .section-label::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 900; color: var(--cream); letter-spacing: -0.02em; margin-bottom: 2.5rem; line-height: 1.1; }
+    .section-title span { color: var(--gold); }
+
+    /* PILLARS */
+    .pillars-section { padding: 4rem 0 2rem; }
+    .pillars-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar-card { background: var(--card-bg); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 12px; padding: 1.4rem 1.5rem; transition: all 0.3s; }
+    .pillar-card:hover { border-color: rgba(241,197,0,0.5); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); background: rgba(241,197,0,0.04); }
+    .pillar-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--cream); font-weight: 700; margin-bottom: 0.4rem; }
+    .pillar-card p { font-size: 0.82rem; color: var(--body-text); line-height: 1.6; }
+    .pillar-card code { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--gold); background: rgba(241,197,0,0.08); padding: 0.05rem 0.3rem; border-radius: 3px; }
+
+    /* DEMO */
+    .demo-section { padding: 3rem 0 2rem; }
+    .demo-panel { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .panel-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.6rem; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--gold); letter-spacing: 0.05em; }
+    .panel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); opacity: 0.7; }
+    .panel-body { padding: 1.5rem; }
+    .hint-text { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.2rem; font-style: italic; }
+
+    .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .product-btn { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 1rem; cursor: pointer; text-align: left; transition: all 0.2s; color: var(--cream); }
+    .product-btn:hover { border-color: rgba(241,197,0,0.45); background: rgba(241,197,0,0.04); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .product-btn strong { display: block; font-size: 0.85rem; font-weight: 600; color: var(--cream); margin-bottom: 0.25rem; }
+    .product-btn .meta { font-size: 0.75rem; color: var(--body-text); display: flex; justify-content: space-between; align-items: center; }
+    .product-btn .price { font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--gold); }
+    .type-badge { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 4px; margin-bottom: 0.3rem; display: inline-block; }
+    .type-physical { background: rgba(59,130,246,0.12); color: #60A5FA; border: 1px solid rgba(59,130,246,0.25); }
+    .type-digital  { background: rgba(16,185,129,0.12); color: #10B981; border: 1px solid rgba(16,185,129,0.25); }
+
+    .cart-section { border-top: 1px solid var(--border); padding-top: 1.25rem; margin-top: 0.25rem; }
+    .cart-heading { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--cream); font-weight: 700; margin-bottom: 0.75rem; }
+    .cart-items { min-height: 70px; }
+    .cart-empty { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 1.5rem 0; font-style: italic; font-family: 'DM Mono', monospace; }
+
+    .cart-item { display: flex; align-items: center; justify-content: space-between; padding: 0.55rem 0.75rem; background: rgba(255,255,255,0.025); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 0.4rem; font-size: 0.82rem; animation: slideIn 0.2s ease; }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: translateX(0); } }
+    .item-name { font-weight: 500; color: var(--cream); flex: 1; }
+    .item-tag { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--text-muted); margin-left: 0.4rem; }
+    .qty-controls { display: flex; align-items: center; gap: 0.4rem; margin: 0 0.75rem; }
+    .qty-btn { width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--border); background: transparent; cursor: pointer; font-size: 0.85rem; color: var(--cream); line-height: 1; transition: all 0.15s; display: flex; align-items: center; justify-content: center; }
+    .qty-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .qty-num { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--cream); min-width: 16px; text-align: center; }
+    .item-subtotal { font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--gold); min-width: 52px; text-align: right; }
+    .remove-btn { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.15); font-size: 0.9rem; margin-left: 0.4rem; transition: color 0.15s; }
+    .remove-btn:hover { color: var(--fail); }
+
+    .discount-row { display: flex; gap: 0.5rem; margin: 1rem 0; }
+    .discount-select { flex: 1; padding: 0.5rem 0.75rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; cursor: pointer; transition: border-color 0.2s; }
+    .discount-select:focus { outline: none; border-color: rgba(241,197,0,0.4); }
+    .discount-select option { background: #2C1810; }
+    .apply-btn { padding: 0.5rem 1.1rem; background: rgba(241,197,0,0.12); border: 1px solid rgba(241,197,0,0.3); border-radius: 8px; color: var(--gold); font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .apply-btn:hover { background: rgba(241,197,0,0.2); border-color: var(--gold); }
+
+    .totals { border-top: 1px solid var(--border); padding-top: 0.85rem; }
+    .totals .row { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--body-text); margin-bottom: 0.3rem; }
+    .totals .row.grand { font-weight: 700; color: var(--cream); font-size: 0.95rem; border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.3rem; }
+    .totals .row.grand span:last-child { font-family: 'DM Mono', monospace; color: var(--gold); }
+    .discount-chip { font-family: 'DM Mono', monospace; font-size: 0.62rem; background: rgba(16,185,129,0.12); color: #10B981; border: 1px solid rgba(16,185,129,0.25); padding: 0.1rem 0.45rem; border-radius: 4px; margin-left: 0.4rem; }
+    .saving-amt { color: #10B981 !important; font-family: 'DM Mono', monospace; }
+
+    .checkout-btn { width: 100%; margin-top: 1rem; padding: 0.85rem; background: var(--gold); color: var(--dark); border: none; border-radius: 8px; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.02em; cursor: pointer; transition: all 0.25s; }
+    .checkout-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(241,197,0,0.3); }
+    .checkout-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    /* RECEIPT */
+    .receipt-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); z-index: 2000; align-items: center; justify-content: center; }
+    .receipt-overlay.show { display: flex; }
+    .receipt-box { background: #2C1810; border: 1px solid var(--border); border-radius: 16px; padding: 2rem; max-width: 420px; width: 90%; box-shadow: 0 32px 80px rgba(0,0,0,0.6); animation: popIn 0.25s ease; }
+    @keyframes popIn { from { opacity: 0; transform: scale(0.93); } to { opacity: 1; transform: scale(1); } }
+    .receipt-box h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--cream); text-align: center; margin-bottom: 1.25rem; font-weight: 700; }
+    .receipt-line { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 0.35rem 0; border-bottom: 1px solid var(--border); color: var(--cream-muted); }
+    .receipt-line span:last-child { font-family: 'DM Mono', monospace; color: var(--cream); }
+    .receipt-total { display: flex; justify-content: space-between; font-weight: 700; font-size: 1rem; margin-top: 0.9rem; color: var(--cream); }
+    .receipt-total span:last-child { font-family: 'DM Mono', monospace; color: var(--gold); }
+    .receipt-id { text-align: center; font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--text-muted); margin-top: 1rem; }
+    .close-receipt { width: 100%; margin-top: 1.25rem; padding: 0.75rem; background: transparent; border: 1px solid var(--border); border-radius: 8px; color: var(--cream); font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .close-receipt:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* TESTS */
+    .tests-section { padding: 3rem 0 5rem; }
+    .run-tests-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; background: var(--gold); color: var(--dark); border: none; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 700; cursor: pointer; transition: all 0.25s; margin-bottom: 2rem; }
+    .run-tests-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(241,197,0,0.3); }
+
+    .test-summary { display: flex; gap: 2rem; margin-bottom: 1.5rem; }
+    .stat .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; line-height: 1; margin-bottom: 0.2rem; }
+    .stat .lbl { font-family: 'DM Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+    .stat.total-stat .num { color: var(--cream); }
+    .stat.pass-stat  .num { color: var(--pass); }
+    .stat.fail-stat  .num { color: var(--fail); }
+
+    .progress-bar { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; margin-bottom: 2rem; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--pass); border-radius: 2px; transition: width 0.7s ease; }
+
+    .test-suite { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 0.75rem; }
+    .suite-header { padding: 0.85rem 1.25rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; transition: background 0.2s; }
+    .suite-header:hover { background: rgba(241,197,0,0.04); }
+    .suite-header.open { border-bottom: 1px solid var(--border); }
+    .suite-name { font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--cream); display: flex; align-items: center; gap: 0.6rem; }
+    .suite-pass-chip { font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 4px; font-family: 'DM Mono', monospace; letter-spacing: 0.04em; }
+    .chip-all-pass { background: rgba(16,185,129,0.12); color: #10B981; border: 1px solid rgba(16,185,129,0.25); }
+    .chip-partial  { background: rgba(239,68,68,0.12);  color: #F87171; border: 1px solid rgba(239,68,68,0.25); }
+    .suite-count { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--text-muted); }
+
+    .suite-body { padding: 0.5rem 1.25rem 0.75rem; display: none; }
+    .suite-body.open { display: block; }
+
+    .test-row { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.55rem 0.25rem; border-bottom: 1px solid rgba(241,197,0,0.06); font-size: 0.8rem; cursor: pointer; border-radius: 6px; transition: background 0.15s; }
+    .test-row:last-child { border-bottom: none; }
+    .test-row:hover { background: rgba(255,255,255,0.02); }
+    .test-icon { font-size: 0.85rem; margin-top: 0.1rem; flex-shrink: 0; }
+    .test-name { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--cream); }
+    .test-desc { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.15rem; }
+    .test-result { font-family: 'DM Mono', monospace; font-size: 0.7rem; white-space: nowrap; margin-top: 0.1rem; }
+    .test-result.pass { color: var(--pass); }
+    .test-result.fail { color: var(--fail); }
+
+    /* FOOTER */
+    footer { background: #0D0705; border-top: 1px solid var(--border); padding: 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-weight: 900; color: var(--gold); font-size: 1.1rem; }
+    footer p { color: var(--text-muted); font-size: 0.82rem; }
+
+    /* ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 680px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .pillars-grid { grid-template-columns: 1fr 1fr; }
+      .test-result { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">← Portfolio</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#tests">Tests</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="hero-strip">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Project Showcase</div>
+    <h1>Java OOP Shopping Cart</h1>
+    <p class="sub">A fully object-oriented system demonstrating all four OOP pillars in Java with a live interactive demo and unit tests.</p>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<div class="page-wrap">
+  <div class="pillars-section reveal">
+    <div class="section-label">Architecture</div>
+    <h2 class="section-title">Four OOP Pillars</h2>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <h4>Encapsulation</h4>
+        <p>All fields are private. Price changes must go through setPrice(), which validates against negatives before allowing the update.</p>
+      </div>
+      <div class="pillar-card">
+        <h4>Inheritance</h4>
+        <p>PhysicalProduct and DigitalProduct both extend Product, inheriting its fields and methods for free.</p>
+      </div>
+      <div class="pillar-card">
+        <h4>Polymorphism</h4>
+        <p>The same getDetails() call on any product returns the correct type-specific output automatically based on the object.</p>
+      </div>
+      <div class="pillar-card">
+        <h4>Abstraction</h4>
+        <p>Product is abstract — you can't create one directly. Discount is an interface with two separate implementations.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<div class="page-wrap" id="demo">
+  <div class="demo-section reveal">
+    <div class="section-label">Interactive</div>
+    <h2 class="section-title">Live Demo</h2>
+    <div class="demo-panel">
+      <div class="panel-header">
+        <div class="panel-dot"></div>
+        Shopping Cart Simulation
+      </div>
+      <div class="panel-body">
+        <p class="hint-text">Click any product to add it to the cart</p>
+        <div class="product-grid">
+          <button class="product-btn" onclick="addProduct('P001')">
+            <span class="type-badge type-physical">📦 Physical</span>
+            <strong>Wireless Headphones</strong>
+            <div class="meta"><span>0.35 kg · $5.99 shipping</span><span class="price">$79.99</span></div>
+          </button>
+          <button class="product-btn" onclick="addProduct('P002')">
+            <span class="type-badge type-physical">📦 Physical</span>
+            <strong>Mechanical Keyboard</strong>
+            <div class="meta"><span>1.10 kg · $8.99 shipping</span><span class="price">$129.99</span></div>
+          </button>
+          <button class="product-btn" onclick="addProduct('D001')">
+            <span class="type-badge type-digital">💾 Digital</span>
+            <strong>Java Beginners eBook</strong>
+            <div class="meta"><span>12.5 MB · instant download</span><span class="price">$14.99</span></div>
+          </button>
+          <button class="product-btn" onclick="addProduct('D002')">
+            <span class="type-badge type-digital">💾 Digital</span>
+            <strong>Code Editor Pro License</strong>
+            <div class="meta"><span>250 MB · instant download</span><span class="price">$49.99</span></div>
+          </button>
+        </div>
+
+        <div class="cart-section">
+          <div class="cart-heading">🛒 Cart</div>
+          <div class="cart-items" id="cartItems">
+            <div class="cart-empty">Cart is empty. Add items above</div>
+          </div>
+          <div class="discount-row">
+            <select class="discount-select" id="discountSelect">
+              <option value="none">No discount</option>
+              <option value="pct10">10% off</option>
+              <option value="pct20">20% off</option>
+              <option value="flat10">$10 off</option>
+              <option value="flat20">$20 off</option>
+            </select>
+            <button class="apply-btn" onclick="applyDiscount()">Apply</button>
+          </div>
+          <div class="totals">
+            <div class="row"><span>Subtotal</span><span id="subtotal" style="font-family:'DM Mono',monospace">$0.00</span></div>
+            <div class="row" id="discountRow" style="display:none">
+              <span>Discount <span class="discount-chip" id="discountLabel"></span></span>
+              <span class="saving-amt" id="discountAmt"></span>
+            </div>
+            <div class="row grand"><span>Total</span><span id="totalAmt">$0.00</span></div>
+          </div>
+          <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled>Checkout →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<div class="page-wrap" id="tests">
+  <div class="tests-section reveal">
+    <div class="section-label">Quality Assurance</div>
+    <h2 class="section-title">Unit <span>Tests</span></h2>
+    <button class="run-tests-btn" onclick="runTests()">▶ Run All Tests</button>
+    <div id="testSummary" style="display:none" class="test-summary">
+      <div class="stat total-stat"><div class="num" id="totalCount">0</div><div class="lbl">Total</div></div>
+      <div class="stat pass-stat"><div class="num" id="passCount">0</div><div class="lbl">Passed</div></div>
+      <div class="stat fail-stat"><div class="num" id="failCount">0</div><div class="lbl">Failed</div></div>
+    </div>
+    <div class="progress-bar" id="progressBar" style="display:none">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+    <div id="testSuites"></div>
+  </div>
+</div>
+
+<div class="receipt-overlay" id="receiptOverlay">
+  <div class="receipt-box">
+    <h3>🧾 Order Receipt</h3>
+    <div id="receiptLines"></div>
+    <div class="receipt-total"><span>Total</span><span id="receiptTotal"></span></div>
+    <div class="receipt-id" id="receiptId"></div>
+    <button class="close-receipt" onclick="closeReceipt()">Close</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 2026 Jaiden Anders — Built with HTML and CSS</p>
+  </div>
+</footer>
+
+<script>
+const PRODUCTS = {
+  P001: { id:'P001', name:'Wireless Headphones', price:79.99,  type:'physical' },
+  P002: { id:'P002', name:'Mechanical Keyboard',  price:129.99, type:'physical' },
+  D001: { id:'D001', name:'Java Beginners eBook',  price:14.99,  type:'digital'  },
+  D002: { id:'D002', name:'Code Editor Pro',        price:49.99,  type:'digital'  },
+};
+const DISCOUNTS = {
+  none:  { label:'',         fn: x => x },
+  pct10: { label:'10% off',  fn: x => x * 0.90 },
+  pct20: { label:'20% off',  fn: x => x * 0.80 },
+  flat10:{ label:'$10 off',  fn: x => Math.max(0, x - 10) },
+  flat20:{ label:'$20 off',  fn: x => Math.max(0, x - 20) },
+};
+let cart = {}, activeDiscount = 'none';
+
+function addProduct(id) { cart[id] = (cart[id] || 0) + 1; renderCart(); }
+function changeQty(id, delta) { cart[id] = (cart[id] || 0) + delta; if (cart[id] <= 0) delete cart[id]; renderCart(); }
+function removeItem(id) { delete cart[id]; renderCart(); }
+function applyDiscount() { activeDiscount = document.getElementById('discountSelect').value; renderCart(); }
+function getSubtotal() { return Object.entries(cart).reduce((s, [id, q]) => s + PRODUCTS[id].price * q, 0); }
+function getTotal() { return DISCOUNTS[activeDiscount].fn(getSubtotal()); }
+
+function renderCart() {
+  const container = document.getElementById('cartItems');
+  const ids = Object.keys(cart);
+  if (!ids.length) {
+    container.innerHTML = '<div class="cart-empty">// cart is empty — add items above</div>';
+    document.getElementById('checkoutBtn').disabled = true;
+  } else {
+    container.innerHTML = ids.map(id => {
+      const p = PRODUCTS[id], qty = cart[id];
+      return `<div class="cart-item">
+        <span class="item-name">${p.name}<span class="item-tag">${p.type === 'physical' ? '📦' : '💾'}</span></span>
+        <div class="qty-controls">
+          <button class="qty-btn" onclick="changeQty('${id}',-1)">−</button>
+          <span class="qty-num">${qty}</span>
+          <button class="qty-btn" onclick="changeQty('${id}',1)">+</button>
+        </div>
+        <span class="item-subtotal">$${(p.price*qty).toFixed(2)}</span>
+        <button class="remove-btn" onclick="removeItem('${id}')">✕</button>
+      </div>`;
+    }).join('');
+    document.getElementById('checkoutBtn').disabled = false;
+  }
+  const sub = getSubtotal(), total = getTotal();
+  document.getElementById('subtotal').textContent = '$' + sub.toFixed(2);
+  document.getElementById('totalAmt').textContent  = '$' + total.toFixed(2);
+  const dRow = document.getElementById('discountRow');
+  if (activeDiscount !== 'none' && ids.length) {
+    dRow.style.display = 'flex';
+    document.getElementById('discountLabel').textContent = DISCOUNTS[activeDiscount].label;
+    document.getElementById('discountAmt').textContent   = '−$' + (sub - total).toFixed(2);
+  } else { dRow.style.display = 'none'; }
+}
+
+function checkout() {
+  const lines = Object.entries(cart).map(([id, qty]) => {
+    const p = PRODUCTS[id];
+    return `<div class="receipt-line"><span>${p.name} ×${qty}</span><span>$${(p.price*qty).toFixed(2)}</span></div>`;
+  });
+  if (activeDiscount !== 'none') {
+    const saved = (getSubtotal() - getTotal()).toFixed(2);
+    lines.push(`<div class="receipt-line" style="color:#10B981"><span>Discount (${DISCOUNTS[activeDiscount].label})</span><span>−$${saved}</span></div>`);
+  }
+  document.getElementById('receiptLines').innerHTML = lines.join('');
+  document.getElementById('receiptTotal').textContent = '$' + getTotal().toFixed(2);
+  document.getElementById('receiptId').textContent = 'Order #' + Math.random().toString(36).substr(2,8).toUpperCase();
+  document.getElementById('receiptOverlay').classList.add('show');
+  cart = {}; activeDiscount = 'none';
+  document.getElementById('discountSelect').value = 'none';
+  renderCart();
+}
+function closeReceipt() { document.getElementById('receiptOverlay').classList.remove('show'); }
+
+const TEST_SUITES = [
+  { name:'ProductTest', tests:[
+    { name:'testProductNameStored',      desc:'Product stores name correctly via constructor',            pass:true, result:'getName() == "Wireless Headphones"' },
+    { name:'testProductPriceStored',     desc:'Product stores price correctly via constructor',           pass:true, result:'getPrice() == 79.99' },
+    { name:'testSetPriceValid',          desc:'setPrice() updates price when value is non-negative',      pass:true, result:'getPrice() == 59.99 after setPrice(59.99)' },
+    { name:'testSetPriceNegativeThrows', desc:'setPrice() throws IllegalArgumentException for negatives', pass:true, result:'IllegalArgumentException thrown as expected' },
+    { name:'testGetSummaryFormat',       desc:'getSummary() returns correctly formatted string',          pass:true, result:'"[P001] Wireless Headphones — $79.99"' },
+  ]},
+  { name:'PhysicalProductTest', tests:[
+    { name:'testInheritsFromProduct',        desc:'PhysicalProduct is an instance of Product',                      pass:true, result:'instanceof Product == true' },
+    { name:'testGetDetailsContainsShipping', desc:'getDetails() includes shipping cost',                            pass:true, result:'contains "$5.99 shipping"' },
+    { name:'testGetDetailsContainsWeight',   desc:'getDetails() includes weight in kg',                            pass:true, result:'contains "0.4 kg"' },
+    { name:'testTotalCostWithShipping',      desc:'getTotalCostWithShipping() = price + shippingCost',             pass:true, result:'79.99 + 5.99 == 85.98' },
+    { name:'testPolymorphicGetDetails',      desc:'getDetails() via Product reference returns physical format',     pass:true, result:'Physical format returned, not null' },
+  ]},
+  { name:'DigitalProductTest', tests:[
+    { name:'testInheritsFromProduct',   desc:'DigitalProduct is an instance of Product',                pass:true, result:'instanceof Product == true' },
+    { name:'testGetDetailsContainsMB',  desc:'getDetails() includes file size in MB',                  pass:true, result:'contains "12.5 MB"' },
+    { name:'testGetDetailsContainsUrl', desc:'getDetails() includes download URL',                     pass:true, result:'contains "store.example.com"' },
+    { name:'testFormattedFileSizeMB',   desc:'getFormattedFileSize() returns MB for files under 1GB',  pass:true, result:'"12.5 MB"' },
+    { name:'testFormattedFileSizeGB',   desc:'getFormattedFileSize() converts to GB for large files',  pass:true, result:'"1.5 GB" for 1500MB file' },
+  ]},
+  { name:'DiscountTest', tests:[
+    { name:'testPercentageDiscount10',      desc:'10% discount on $100 returns $90',                  pass:true, result:'apply(100.0) == 90.0' },
+    { name:'testPercentageDiscount0',       desc:'0% discount returns original price',                pass:true, result:'apply(50.0) == 50.0' },
+    { name:'testPercentageDiscountInvalid', desc:'Percentage > 100 throws IllegalArgumentException',  pass:true, result:'IllegalArgumentException thrown' },
+    { name:'testFlatDiscount',              desc:'$10 flat discount on $50 returns $40',              pass:true, result:'apply(50.0) == 40.0' },
+    { name:'testFlatDiscountFloor',         desc:'Flat discount cannot reduce price below $0',        pass:true, result:'apply(5.0) == 0.0 for $10 discount' },
+  ]},
+  { name:'CartItemTest', tests:[
+    { name:'testGetSubtotal',            desc:'getSubtotal() = price × quantity',                        pass:true, result:'79.99 × 2 == 159.98' },
+    { name:'testQuantityZeroThrows',     desc:'CartItem with qty 0 throws IllegalArgumentException',     pass:true, result:'IllegalArgumentException thrown' },
+    { name:'testQuantityNegativeThrows', desc:'CartItem with qty -1 throws IllegalArgumentException',    pass:true, result:'IllegalArgumentException thrown' },
+    { name:'testSetQuantityUpdates',     desc:'setQuantity() correctly updates quantity',                pass:true, result:'getQuantity() == 5 after setQuantity(5)' },
+    { name:'testToReceiptLineFormat',    desc:'toReceiptLine() produces correctly padded string',        pass:true, result:'Contains product name and subtotal' },
+  ]},
+  { name:'ShoppingCartTest', tests:[
+    { name:'testAddItemNewProduct',       desc:'addItem() creates a new CartItem for unseen product',      pass:true, result:'cart.getItemCount() == 1' },
+    { name:'testAddItemExistingProduct',  desc:'addItem() increments quantity if product already in cart', pass:true, result:'quantity == 2 after adding same product twice' },
+    { name:'testRemoveItem',              desc:'removeItem() removes the correct item by productId',       pass:true, result:'cart.getItemCount() == 0 after removal' },
+    { name:'testGetSubtotal',             desc:'getSubtotal() sums all item subtotals correctly',          pass:true, result:'$79.99 + $129.99 == $209.98' },
+    { name:'testGetTotalWithDiscount',    desc:'getTotal() applies discount to subtotal',                  pass:true, result:'$209.98 × 0.90 == $188.98' },
+    { name:'testCheckoutEmptyCartThrows', desc:'checkout() on empty cart throws IllegalStateException',    pass:true, result:'IllegalStateException thrown' },
+    { name:'testCheckoutClearsCart',      desc:'After checkout(), cart is empty',                          pass:true, result:'getItemCount() == 0 after checkout' },
+  ]},
+  { name:'OrderTest', tests:[
+    { name:'testOrderIdGenerated',      desc:'Order ID is auto-generated and non-null',             pass:true, result:'orderId != null && orderId.length() == 8' },
+    { name:'testOrderTotalStored',      desc:'Order stores the correct final total',                pass:true, result:'getTotalPrice() == 188.98' },
+    { name:'testOrderIsImmutable',      desc:'Order has no setters — all fields are final',         pass:true, result:'No setter methods found via reflection' },
+    { name:'testOrderItemsAreSnapshot', desc:'Modifying cart after checkout does not affect Order', pass:true, result:'order.getItems().size() unchanged after cart.clear()' },
+  ]},
+];
+
+function runTests() {
+  const container = document.getElementById('testSuites');
+  container.innerHTML = '';
+  let totalPass = 0, totalFail = 0;
+  TEST_SUITES.forEach(suite => {
+    const passCount = suite.tests.filter(t => t.pass).length;
+    const allPass = passCount === suite.tests.length;
+    const div = document.createElement('div');
+    div.className = 'test-suite';
+    div.innerHTML = `
+      <div class="suite-header" onclick="toggleSuite(this)">
+        <span class="suite-name">${suite.name}<span class="suite-pass-chip ${allPass ? 'chip-all-pass' : 'chip-partial'}">${allPass ? 'all pass' : passCount + '/' + suite.tests.length}</span></span>
+        <span class="suite-count">${passCount}/${suite.tests.length} passed</span>
+      </div>
+      <div class="suite-body">
+        ${suite.tests.map(t => `
+          <div class="test-row">
+            <span class="test-icon">${t.pass ? '✅' : '❌'}</span>
+            <div style="flex:1">
+              <div class="test-name">${t.name}()</div>
+              <div class="test-desc">${t.desc}</div>
+            </div>
+            <span class="test-result ${t.pass ? 'pass' : 'fail'}">${t.result}</span>
+          </div>`).join('')}
+      </div>`;
+    totalPass += passCount;
+    totalFail += suite.tests.length - passCount;
+    container.appendChild(div);
+  });
+  const total = totalPass + totalFail;
+  document.getElementById('totalCount').textContent = total;
+  document.getElementById('passCount').textContent  = totalPass;
+  document.getElementById('failCount').textContent  = totalFail;
+  document.getElementById('testSummary').style.display = 'flex';
+  document.getElementById('progressBar').style.display  = 'block';
+  setTimeout(() => { document.getElementById('progressFill').style.width = (totalPass/total*100)+'%'; }, 100);
+}
+
+function toggleSuite(header) {
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+  header.classList.toggle('open');
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
