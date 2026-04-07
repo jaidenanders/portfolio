@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaiden Anders — Full-Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </div>
+            <ul id="navMenu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-eyebrow">Full-Stack Developer · CS Graduate · WMU '25</div>
+            <h1>Jaiden Anders</h1>
+            <p class="hero-sub">Recent Computer Science graduate from Western Michigan University. I focus on building clean, efficient software from backend logic to polished interfaces. I'm not afraid to dip my toes in new languages and new environments as I love broadening my knowledge base.</p>
+            <div class="hero-ctas">
+                <a href="#projects" class="btn-primary">View My Work →</a>
+                <a href="#contact" class="btn-ghost">Get In Touch</a>
+            </div>
+            <div class="hero-stats">
+                <div>
+                    <div class="hero-stat-label">Degree</div>
+                    <div class="hero-stat-value" style="font-size:1rem; padding-top:0.4rem; color:var(--cream); font-family:'DM Sans',sans-serif;">B.S. Computer Science</div>
+                </div>
+                <div>
+                    <div class="hero-stat-label">GPA</div>
+                    <div class="hero-stat-value">3.19</div>
+                </div>
+                <div>
+                    <div class="hero-stat-label">Status</div>
+                    <div class="hero-stat-value" style="font-size:0.95rem; color:#10B981; padding-top:0.5rem; font-family:'DM Mono',monospace;">Open to Work</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <hr class="section-divider">
+    <div id="about">
+        <div class="section">
+            <div class="section-label">01 — About Me</div>
+            <h2 class="section-title">Building things that matter</h2>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p>I'm a recent Computer Science graduate from Western Michigan University with a passion for building innovative software solutions. My education gave me strong foundations in algorithms, data structures, and software engineering principles.</p>
+                    <p>With 4+ years of Python experience and fluency across many languages and frameworks, I love tackling complex problems and turning ideas into functional, elegant code.</p>
+                    <p>I'm actively seeking a full-time software engineering role where I can contribute to meaningful projects, collaborate with driven teams, and keep growing as a developer.</p>
+                    <div style="margin-top: 1.75rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+                        <a href="resume.pdf" download class="btn-primary" style="font-size:0.88rem; padding: 0.7rem 1.5rem;">📄 Download Resume</a>
+                    </div>
+                </div>
+                <div class="skills-panel reveal">
+                    <div>
+                        <div class="skill-group-label">Languages</div>
+                        <div class="skill-chips">
+                            <span class="chip chip-gold">Python</span>
+                            <span class="chip chip-gold">JavaScript</span>
+                            <span class="chip chip-gold">C#</span>
+                            <span class="chip chip-gold">Java</span>
+                            <span class="chip chip-gold">C / C++</span>
+                            <span class="chip chip-gold">SQL</span>
+                            <span class="chip chip-gold">R</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="skill-group-label">Web & Frameworks</div>
+                        <div class="skill-chips">
+                            <span class="chip chip-gold">React</span>
+                            <span class="chip chip-gold">HTML5 / CSS3</span>
+                            <span class="chip chip-gold">Tailwind CSS</span>
+                            <span class="chip chip-gold">Node.js</span>
+                            <span class="chip chip-gold">REST APIs</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="skill-group-label">Databases</div>
+                        <div class="skill-chips">
+                            <span class="chip chip-gold">MySQL</span>
+                            <span class="chip chip-gold">PostgreSQL</span>
+                            <span class="chip chip-gold">Firebase Firestore</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="skill-group-label">Tools & Platforms</div>
+                        <div class="skill-chips">
+                            <span class="chip chip-gold">Git / GitHub</span>
+                            <span class="chip chip-gold">Linux</span>
+                            <span class="chip chip-gold">VS Code</span>
+                            <span class="chip chip-gold">Chrome Extensions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <hr class="section-divider">
+    <div id="projects" style="background:#110A06;">
+        <div class="section">
+            <div class="section-label">02 — Projects</div>
+            <h2 class="section-title">Featured work</h2>
+            <div class="projects-grid">
+
+                <div class="project-card reveal">
+                    <div class="project-header">
+                        <div class="project-icon">📋</div>
+                        <span class="status-badge badge-live">🟢 Live</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>Job Application Tracker</h3>
+                        <p>Full-stack job search management system with Chrome extension integration. Real-time sync, Google Calendar integration, drag-and-drop status updates, and automated scraping from LinkedIn & Indeed.</p>
+                        <div class="project-tags">
+                            <span class="ptag">React</span>
+                            <span class="ptag">Firebase</span>
+                            <span class="ptag">Tailwind CSS</span>
+                            <span class="ptag">Chrome Extension</span>
+                            <span class="ptag">REST API</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://tracker.jaidenanders.dev" class="project-link">🎯 Launch App →</a>
+                        <a href="https://github.com/jaidenanders/job-tracker" class="project-link">GitHub →</a>
+                        <a href="https://tracker.jaidenanders.dev/extension" class="project-link">Extension →</a>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-header">
+                        <div class="project-icon">🧭</div>
+                        <span class="status-badge badge-live">🟢 Live</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>Store Map Builder & Path Optimizer</h3>
+                        <p>Interactive store layout builder with intelligent pick-path optimization. Users can design custom store maps, place aisles and products, and generate the most efficient shopping route using graph-based algorithms and heuristic optimization.</p>
+                        <div class="project-tags">
+                            <span class="ptag">React</span>
+                            <span class="ptag">Algorithms</span>
+                            <span class="ptag">A*</span>
+                            <span class="ptag">Graph Theory</span>
+                            <span class="ptag">Optimization</span>
+                            <span class="ptag">Tailwind CSS</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://routing.jaidenanders.dev/" class="project-link">🎯 Launch App →</a>
+                        <a href="https://github.com/jaidenanders/route-optimization/tree/main" class="project-link">GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-header">
+                        <div class="project-icon">🧿</div>
+                        <span class="status-badge badge-live">🟢 Live</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>BegleriTricks Platform</h3>
+                        <p>Engineered a full-stack content platform from the ground up using Next.js, applying Test-Driven Development (TDD) to guide architecture and implementation. Designed a normalized data model for trick classification, enabling dynamic filtering, tag-based indexing, and fast search across structured datasets. Built scalable routing and a component-driven UI to support progressive, skill-based navigation and content discovery. Ensured reliability through comprehensive testing, including unit, system-level, and mutation testing.</p>
+                        <div class="project-tags">
+                            <span class="ptag">Next.js</span>
+                            <span class="ptag">TypeScript</span>
+                            <span class="ptag">Data Modeling</span>
+                            <span class="ptag">Search & Indexing</span>
+                            <span class="ptag">Dynamic Routing</span>
+                            <span class="ptag">Full-Stack</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://begleritricks.com" class="project-link">🎯 Visit Site →</a>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-header">
+                        <div class="project-icon">🛒</div>
+                        <span class="status-badge badge-live">🟢 Live</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>Java OOP Shopping Cart</h3>
+                        <p>A fully object-oriented shopping cart built in Java demonstrating all four OOP pillars. Includes a live interactive demo and 36 JUnit-style unit tests.</p>
+                        <div class="project-tags">
+                            <span class="ptag">Java</span>
+                            <span class="ptag">OOP</span>
+                            <span class="ptag">Inheritance</span>
+                            <span class="ptag">Polymorphism</span>
+                            <span class="ptag">Unit Testing</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="shopping-cart-project.html" class="project-link">🎯 Live Demo →</a>
+                        <a href="https://github.com/jaidenanders/portfolio" class="project-link">GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-header">
+                        <div class="project-icon">🗂️</div>
+                        <span class="status-badge badge-live">🟢 Live</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>CLI File Deduplicator</h3>
+                        <p>A command-line tool that recursively scans directories to detect and remove duplicate files using content hashing. Supports dry-run mode, configurable scan depth, file-type filtering, and detailed scan reports — built for speed and cross-platform use.</p>
+                        <div class="project-tags">
+                            <span class="ptag">CLI</span>
+                            <span class="ptag">File Systems</span>
+                            <span class="ptag">Hashing</span>
+                            <span class="ptag">Automation</span>
+                            <span class="ptag">Cross-Platform</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/jaidenanders/cli-file-deduplicator" class="project-link">GitHub →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <hr class="section-divider">
+    <div id="experience">
+        <div class="section">
+            <div class="section-label">03 — Experience</div>
+            <h2 class="section-title">Work history</h2>
+            <div class="timeline">
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-meta">
+                        <span class="timeline-role">Online Pickup & Delivery Team Lead</span>
+                        <span class="timeline-company">Walmart · Portage, MI</span>
+                        <span class="timeline-date">Dec 2024 – Present</span>
+                    </div>
+                    <ul class="timeline-body">
+                        <li>Led 40-person team processing 8,000+ items and 350+ orders daily while maintaining operational efficiency</li>
+                        <li>Scaled transaction volume 54% YoY (80K → 123K orders) while reducing average wait time 28%</li>
+                        <li>Increased annual revenue 44% YoY ($6.6M → $9.6M) through optimized order flow and staffing allocation</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-meta">
+                        <span class="timeline-role">Front End Team Lead</span>
+                        <span class="timeline-company">Walmart · Portage, MI</span>
+                        <span class="timeline-date">Jul 2024 – Dec 2024</span>
+                    </div>
+                    <ul class="timeline-body">
+                        <li>Managed front-end team operations and daily workflow efficiency</li>
+                        <li>Resolved customer escalations while maintaining high satisfaction ratings</li>
+                        <li>Implemented operational improvements and coordinated staff training</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-meta">
+                        <span class="timeline-role">Gas Station Clerk</span>
+                        <span class="timeline-company">Walmart · Portage, MI</span>
+                        <span class="timeline-date">Jun 2023 – Jul 2024</span>
+                    </div>
+                    <ul class="timeline-body">
+                        <li>Adhered to strict safety protocols for fuel dispensing and hazardous materials handling</li>
+                        <li>Maintained cleanliness and organization per company standards</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-meta">
+                        <span class="timeline-role">Asset Protection Investigator</span>
+                        <span class="timeline-company">Walmart · Portage, MI</span>
+                        <span class="timeline-date">Jan 2023 – Jun 2023</span>
+                    </div>
+                    <ul class="timeline-body">
+                        <li>Investigated potential theft and policy violations to minimize company loss</li>
+                        <li>Documented and reported incidents with detailed accuracy</li>
+                        <li>Responded professionally to emergency situations involving safety or theft</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-meta">
+                        <span class="timeline-role">Digital Shopper · Cashier · Customer Service</span>
+                        <span class="timeline-company">Walmart · Paw Paw, MI</span>
+                        <span class="timeline-date">Jan 2022 – Jan 2023</span>
+                    </div>
+                    <ul class="timeline-body">
+                        <li>Customer-facing roles emphasizing accuracy, efficiency, and communication</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <hr class="section-divider">
+    <div id="education" style="background:#110A06;">
+        <div class="section">
+            <div class="section-label">04 — Education</div>
+            <h2 class="section-title">Academic background</h2>
+
+            <div class="edu-card reveal">
+                <h3>Bachelor of Science in Computer Science</h3>
+                <div class="edu-meta">Western Michigan University · Graduated December 2025 · GPA 3.19/4.0 · CAC/ABET Accredited</div>
+                <div class="edu-honors">Dean's List — Fall 2024 · Spring 2025 · Summer 2025 · Fall 2025</div>
+                <div class="section-label" style="margin-bottom:0.75rem; margin-top:0.25rem;">Relevant Coursework</div>
+                <div class="coursework-grid">
+                    <div class="course-item">Machine Learning</div>
+                    <div class="course-item">Artificial Intelligence</div>
+                    <div class="course-item">Computer Security & Info Assurance</div>
+                    <div class="course-item">Operating Systems for Cybersecurity</div>
+                    <div class="course-item">Database Management Systems</div>
+                    <div class="course-item">Software Systems Development I & II</div>
+                    <div class="course-item">Design & Analysis of Algorithms</div>
+                    <div class="course-item">Data and File Structures</div>
+                    <div class="course-item">Systems Programming Concepts</div>
+                    <div class="course-item">Network Fundamentals</div>
+                    <div class="course-item">Foundations of Programming Languages</div>
+                    <div class="course-item">Web Technologies</div>
+                    <div class="course-item">Computer Organization & Assembly</div>
+                    <div class="course-item">Regression Analysis</div>
+                    <div class="course-item">Data Analysis Using R</div>
+                    <div class="course-item">Elementary Linear Algebra</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <hr class="section-divider">
+    <div id="contact">
+        <div class="section">
+            <div class="section-label">05 — Contact</div>
+            <h2 class="section-title">Let's connect</h2>
+            <div class="contact-layout">
+                <div class="contact-aside reveal">
+                    <h3>Open to opportunities</h3>
+                    <p>I'm actively looking for full-time software engineering roles. Whether you have a position in mind, want to collaborate, or just want to say hi — my inbox is open.</p>
+                    <div class="contact-social-links">
+                        <a href="mailto:jaidenanders60@gmail.com" class="social-link">
+                            <div class="social-icon">📧</div>
+                            jaidenanders60@gmail.com
+                        </a>
+                        <a href="https://github.com/jaidenanders" target="_blank" class="social-link">
+                            <div class="social-icon">💻</div>
+                            github.com/jaidenanders
+                        </a>
+                        <a href="https://www.linkedin.com/in/jaiden-anders/" target="_blank" class="social-link">
+                            <div class="social-icon">💼</div>
+                            linkedin.com/in/jaiden-anders
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form reveal">
+                    <form name="contact" method="POST" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company (Optional)</label>
+                            <input type="text" id="company" name="company" placeholder="Where you work">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Tell me about the opportunity or project..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message →</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <p>&copy; 2026 Jaiden Anders — Built with HTML and CSS</p>
+            <p><a href="mailto:jaidenanders60@gmail.com">jaidenanders60@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('navMenu');
+
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('open');
+            menu.classList.toggle('open');
+            document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                toggle.classList.remove('open');
+                menu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
