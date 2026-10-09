@@ -4,16 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jaiden Anders — Full-Stack Developer</title>
+    <meta name="description" content="Portfolio of Jaiden Anders — Full-Stack Developer and CS Graduate from Western Michigan University. Building clean, scalable software across React, Next.js, Python, algorithms, and backend systems.">
+    <meta name="keywords" content="Jaiden Anders, Software Engineer, Full-Stack Developer, Computer Science, Western Michigan University, React, Next.js, Python, TypeScript, Portfolio">
+    <meta name="author" content="Jaiden Anders">
+    <meta name="theme-color" content="#1A0F0A">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jaidenanders.dev">
+    <meta property="og:title" content="Jaiden Anders — Full-Stack Developer">
+    <meta property="og:description" content="Recent CS Graduate from WMU. Building clean, efficient software across React, Next.js, Python, and scalable backend systems.">
+    <meta property="og:image" content="https://jaidenanders.dev/favicon.ico">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Jaiden Anders — Full-Stack Developer">
+    <meta name="twitter:description" content="Recent CS Graduate from WMU. Building clean, efficient software across React, Next.js, Python, and scalable backend systems.">
+    <meta name="twitter:image" content="https://jaidenanders.dev/favicon.ico">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jaiden Anders",
+      "url": "https://jaidenanders.dev",
+      "jobTitle": "Full-Stack Developer",
+      "alumnusOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Western Michigan University"
+      },
+      "sameAs": [
+        "https://github.com/jaidenanders",
+        "https://www.linkedin.com/in/jaiden-anders/"
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#about" class="skip-link">Skip to main content</a>
 
     <header>
         <nav>
-            <div class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+            <div class="menu-toggle" id="menuToggle" role="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu" tabindex="0">
                 <span></span><span></span><span></span>
             </div>
             <ul id="navMenu">
@@ -21,33 +59,46 @@
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#certifications" class="nav-link">Certificates</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
 
+    <main id="main-content">
+
     <!-- HERO -->
     <section class="hero">
         <div class="hero-inner">
-            <div class="hero-eyebrow">Full-Stack Developer · CS Graduate · WMU '25</div>
+            <div class="hero-eyebrow">Full-Stack Software Engineer · CS Graduate · WMU '25</div>
             <h1>Jaiden Anders</h1>
-            <p class="hero-sub">Recent Computer Science graduate from Western Michigan University. I focus on building clean, efficient software from backend logic to polished interfaces. I'm not afraid to dip my toes in new languages and new environments as I love broadening my knowledge base.</p>
+            <p class="hero-sub">Full-Stack Software Engineer based in Grand Rapids, MI. Recent Computer Science graduate from Western Michigan University (GPA 3.19, Dean's List). I build production-grade applications spanning React, Node.js, PostgreSQL, Python, and scalable backend systems — backed by rare operational leadership experience managing teams at high scale.</p>
             <div class="hero-ctas">
                 <a href="#projects" class="btn-primary">View My Work →</a>
                 <a href="#contact" class="btn-ghost">Get In Touch</a>
             </div>
-            <div class="hero-stats">
-                <div>
-                    <div class="hero-stat-label">Degree</div>
-                    <div class="hero-stat-value" style="font-size:1rem; padding-top:0.4rem; color:var(--cream); font-family:'DM Sans',sans-serif;">B.S. Computer Science</div>
+            <div class="hero-socials">
+                <a href="https://github.com/jaidenanders" target="_blank" rel="noopener noreferrer" class="hero-social-pill">💻 GitHub</a>
+                <a href="https://www.linkedin.com/in/jaiden-anders/" target="_blank" rel="noopener noreferrer" class="hero-social-pill">💼 LinkedIn</a>
+                <a href="mailto:jaidenanders60@gmail.com" class="hero-social-pill">📧 Email</a>
+                <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="hero-social-pill">📄 Resume</a>
+            </div>
+            <div class="hero-stats-grid">
+                <div class="hero-stat-card">
+                    <div class="hero-stat-val">B.S. CS</div>
+                    <div class="hero-stat-lbl">WMU · December 2025</div>
                 </div>
-                <div>
-                    <div class="hero-stat-label">GPA</div>
-                    <div class="hero-stat-value">3.19</div>
+                <div class="hero-stat-card">
+                    <div class="hero-stat-val">3.19</div>
+                    <div class="hero-stat-lbl">Cumulative GPA</div>
                 </div>
-                <div>
-                    <div class="hero-stat-label">Status</div>
-                    <div class="hero-stat-value" style="font-size:0.95rem; color:#10B981; padding-top:0.5rem; font-family:'DM Mono',monospace;">Open to Work</div>
+                <div class="hero-stat-card">
+                    <div class="hero-stat-val">4x</div>
+                    <div class="hero-stat-lbl">Dean's List Honoree</div>
+                </div>
+                <div class="hero-stat-card">
+                    <div class="hero-stat-val status-val"><span class="status-pulse"></span>Open to Work</div>
+                    <div class="hero-stat-lbl">Software Engineering</div>
                 </div>
             </div>
         </div>
@@ -55,79 +106,171 @@
 
     <!-- ABOUT -->
     <hr class="section-divider">
-    <div id="about">
+    <section id="about">
         <div class="section">
             <div class="section-label">01 — About Me</div>
             <h2 class="section-title">Building things that matter</h2>
             <div class="about-grid">
-                <div class="about-text reveal">
-                    <p>I'm a recent Computer Science graduate from Western Michigan University with a passion for building innovative software solutions. My education gave me strong foundations in algorithms, data structures, and software engineering principles.</p>
-                    <p>With 4+ years of Python experience and fluency across many languages and frameworks, I love tackling complex problems and turning ideas into functional, elegant code.</p>
-                    <p>I'm actively seeking a full-time software engineering role where I can contribute to meaningful projects, collaborate with driven teams, and keep growing as a developer.</p>
-                    <div style="margin-top: 1.75rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
-                        <a href="resume.pdf" download class="btn-primary" style="font-size:0.88rem; padding: 0.7rem 1.5rem;">📄 Download Resume</a>
+                <div class="about-card about-story-card reveal">
+                    <div>
+                        <div class="about-card-header">
+                            <div class="about-card-icon" aria-hidden="true">💡</div>
+                            <div>
+                                <h3>Engineering & Leadership</h3>
+                                <div class="about-card-subtitle">Grand Rapids, MI · Full-Stack Systems & Operations</div>
+                            </div>
+                        </div>
+
+                        <div class="about-story-body">
+                            <p>I'm a full-stack software engineer and recent Computer Science graduate from Western Michigan University (GPA 3.19, Dean's List) with a portfolio of deployed, production-grade applications spanning React, Node.js, PostgreSQL, Python, and REST API integration.</p>
+                            <p>I design systems end-to-end — from database schemas and server-side logic to responsive UIs and browser extension APIs. With 4+ years of Python experience and fluency in TypeScript, React, and Java, I excel at turning complex algorithmic challenges and heuristics into clean, maintainable software.</p>
+                            <p>Beyond code, I bring rare operational depth from coaching and managing high-volume teams of up to 60 associates at Walmart, applying data-driven systems thinking and root-cause analysis to scale order volume 54% and annual revenue 44%.</p>
+                        </div>
+
+                        <div class="about-highlights-strip">
+                            <span class="about-highlight-pill">⚡ End-to-End Architecture</span>
+                            <span class="about-highlight-pill">👥 Team Leadership at Scale</span>
+                            <span class="about-highlight-pill">🎓 WMU CS '25 (GPA 3.19)</span>
+                        </div>
+                    </div>
+
+                    <div class="about-actions">
+                        <a href="resume.pdf" download class="btn-primary" style="font-size:0.88rem; padding: 0.7rem 1.4rem;">📄 Download Resume</a>
+                        <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.88rem; padding: 0.7rem 1.4rem;">👁️ View Resume</a>
                     </div>
                 </div>
-                <div class="skills-panel reveal">
-                    <div>
-                        <div class="skill-group-label">Languages</div>
-                        <div class="skill-chips">
-                            <span class="chip chip-gold">Python</span>
-                            <span class="chip chip-gold">JavaScript</span>
-                            <span class="chip chip-gold">C#</span>
-                            <span class="chip chip-gold">Java</span>
-                            <span class="chip chip-gold">C / C++</span>
-                            <span class="chip chip-gold">SQL</span>
-                            <span class="chip chip-gold">R</span>
+
+                <div class="about-card about-skills-card reveal">
+                    <div class="about-card-header">
+                        <div class="about-card-icon" aria-hidden="true">⚙️</div>
+                        <div>
+                            <h3>Technical Competencies</h3>
+                            <div class="about-card-subtitle">Languages, Frameworks, Architecture & Tools</div>
                         </div>
                     </div>
-                    <div>
-                        <div class="skill-group-label">Web & Frameworks</div>
-                        <div class="skill-chips">
-                            <span class="chip chip-gold">React</span>
-                            <span class="chip chip-gold">HTML5 / CSS3</span>
-                            <span class="chip chip-gold">Tailwind CSS</span>
-                            <span class="chip chip-gold">Node.js</span>
-                            <span class="chip chip-gold">REST APIs</span>
+
+                    <div class="skills-domain-grid">
+                        <div class="skill-group">
+                            <div class="skill-group-label">
+                                <span class="skill-group-icon" aria-hidden="true">💻</span>
+                                Languages
+                            </div>
+                            <div class="skill-chips">
+                                <span class="chip chip-gold">Python</span>
+                                <span class="chip chip-gold">JavaScript (ES6+)</span>
+                                <span class="chip chip-gold">TypeScript</span>
+                                <span class="chip chip-gold">Java</span>
+                                <span class="chip chip-gold">SQL</span>
+                                <span class="chip chip-gold">C / C++</span>
+                                <span class="chip chip-gold">C#</span>
+                                <span class="chip chip-gold">R</span>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="skill-group-label">Databases</div>
-                        <div class="skill-chips">
-                            <span class="chip chip-gold">MySQL</span>
-                            <span class="chip chip-gold">PostgreSQL</span>
-                            <span class="chip chip-gold">Firebase Firestore</span>
+
+                        <div class="skill-group">
+                            <div class="skill-group-label">
+                                <span class="skill-group-icon" aria-hidden="true">🌐</span>
+                                Frontend & Web
+                            </div>
+                            <div class="skill-chips">
+                                <span class="chip chip-gold">React</span>
+                                <span class="chip chip-gold">HTML5 / CSS3</span>
+                                <span class="chip chip-gold">Tailwind CSS</span>
+                                <span class="chip chip-gold">Responsive Design</span>
+                                <span class="chip chip-gold">Drag-and-Drop UI</span>
+                                <span class="chip chip-gold">SVG</span>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="skill-group-label">Tools & Platforms</div>
-                        <div class="skill-chips">
-                            <span class="chip chip-gold">Git / GitHub</span>
-                            <span class="chip chip-gold">Linux</span>
-                            <span class="chip chip-gold">VS Code</span>
-                            <span class="chip chip-gold">Chrome Extensions</span>
+
+                        <div class="skill-group">
+                            <div class="skill-group-label">
+                                <span class="skill-group-icon" aria-hidden="true">🔌</span>
+                                Backend & APIs
+                            </div>
+                            <div class="skill-chips">
+                                <span class="chip chip-gold">Node.js</span>
+                                <span class="chip chip-gold">REST APIs</span>
+                                <span class="chip chip-gold">Express</span>
+                                <span class="chip chip-gold">OAuth 2.0 (Google, Discord)</span>
+                                <span class="chip chip-gold">Chrome Extension API</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-group-label">
+                                <span class="skill-group-icon" aria-hidden="true">🗄️</span>
+                                Databases
+                            </div>
+                            <div class="skill-chips">
+                                <span class="chip chip-gold">PostgreSQL</span>
+                                <span class="chip chip-gold">MySQL</span>
+                                <span class="chip chip-gold">Firebase Firestore</span>
+                                <span class="chip chip-gold">Database Schema Design</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-group-label">
+                                <span class="skill-group-icon" aria-hidden="true">🛠️</span>
+                                Tools & DevOps
+                            </div>
+                            <div class="skill-chips">
+                                <span class="chip chip-gold">Git / GitHub</span>
+                                <span class="chip chip-gold">GitHub Actions (CI/CD)</span>
+                                <span class="chip chip-gold">Linux</span>
+                                <span class="chip chip-gold">Agile / Scrum</span>
+                                <span class="chip chip-gold">VS Code</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-group-label">
+                                <span class="skill-group-icon" aria-hidden="true">📐</span>
+                                Core Concepts
+                            </div>
+                            <div class="skill-chips">
+                                <span class="chip chip-gold">Algorithms & Data Structures</span>
+                                <span class="chip chip-gold">Graph Traversal</span>
+                                <span class="chip chip-gold">Optimization Heuristics</span>
+                                <span class="chip chip-gold">OOP</span>
+                                <span class="chip chip-gold">MVC</span>
+                                <span class="chip chip-gold">Full-Stack Architecture</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- PROJECTS -->
     <hr class="section-divider">
-    <div id="projects" style="background:#110A06;">
+    <section id="projects" style="background:#110A06;">
         <div class="section">
             <div class="section-label">02 — Projects</div>
             <h2 class="section-title">Featured work</h2>
+
+            <div class="project-filter-tabs" role="tablist" aria-label="Filter projects">
+                <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All Projects <span class="count">(5)</span></button>
+                <button class="filter-tab" data-filter="fullstack" role="tab" aria-selected="false">Full-Stack & Web <span class="count">(2)</span></button>
+                <button class="filter-tab" data-filter="algorithms" role="tab" aria-selected="false">Algorithms & Systems <span class="count">(2)</span></button>
+                <button class="filter-tab" data-filter="tools" role="tab" aria-selected="false">Tools & AI <span class="count">(2)</span></button>
+            </div>
+
             <div class="projects-grid">
 
-                <div class="project-card reveal">
+                <div class="project-card reveal" data-category="fullstack">
+                    <div class="project-mockup-header">
+                        <div class="mockup-dots"><span class="mockup-dot dot-red"></span><span class="mockup-dot dot-amber"></span><span class="mockup-dot dot-green"></span></div>
+                        <span class="mockup-title">tracker.jaidenanders.dev</span>
+                    </div>
                     <div class="project-header">
                         <div class="project-icon">📋</div>
                         <span class="status-badge badge-live">🟢 Live</span>
                     </div>
                     <div class="project-body">
                         <h3>Job Application Tracker</h3>
+                        <div class="project-highlight">⚡ Real-Time Sync · Chrome MV3</div>
                         <p>Full-stack job search management system with Chrome extension integration. Real-time sync, Google Calendar integration, drag-and-drop status updates, and automated scraping from LinkedIn & Indeed.</p>
                         <div class="project-tags">
                             <span class="ptag">React</span>
@@ -138,19 +281,24 @@
                         </div>
                     </div>
                     <div class="project-footer">
-                        <a href="https://tracker.jaidenanders.dev" class="project-link">🎯 Launch App →</a>
-                        <a href="https://github.com/jaidenanders/job-tracker" class="project-link">GitHub →</a>
-                        <a href="https://tracker.jaidenanders.dev/extension" class="project-link">Extension →</a>
+                        <a href="https://tracker.jaidenanders.dev" target="_blank" rel="noopener noreferrer" class="project-link">🎯 Launch App →</a>
+                        <a href="https://github.com/jaidenanders/job-tracker" target="_blank" rel="noopener noreferrer" class="project-link">GitHub →</a>
+                        <a href="https://tracker.jaidenanders.dev/extension" target="_blank" rel="noopener noreferrer" class="project-link">Extension →</a>
                     </div>
                 </div>
 
-                <div class="project-card reveal">
+                <div class="project-card reveal" data-category="fullstack algorithms">
+                    <div class="project-mockup-header">
+                        <div class="mockup-dots"><span class="mockup-dot dot-red"></span><span class="mockup-dot dot-amber"></span><span class="mockup-dot dot-green"></span></div>
+                        <span class="mockup-title">routing.jaidenanders.dev</span>
+                    </div>
                     <div class="project-header">
                         <div class="project-icon">🧭</div>
                         <span class="status-badge badge-live">🟢 Live</span>
                     </div>
                     <div class="project-body">
                         <h3>Store Map Builder & Path Optimizer</h3>
+                        <div class="project-highlight">🧭 A* Graph Optimization & Heuristics</div>
                         <p>Interactive store layout builder with intelligent pick-path optimization. Users can design custom store maps, place aisles and products, and generate the most efficient shopping route using graph-based algorithms and heuristic optimization.</p>
                         <div class="project-tags">
                             <span class="ptag">React</span>
@@ -162,40 +310,50 @@
                         </div>
                     </div>
                     <div class="project-footer">
-                        <a href="https://routing.jaidenanders.dev/" class="project-link">🎯 Launch App →</a>
-                        <a href="https://github.com/jaidenanders/route-optimization/tree/main" class="project-link">GitHub →</a>
+                        <a href="https://routing.jaidenanders.dev/" target="_blank" rel="noopener noreferrer" class="project-link">🎯 Launch App →</a>
+                        <a href="https://github.com/jaidenanders/route-optimization/tree/main" target="_blank" rel="noopener noreferrer" class="project-link">GitHub →</a>
                     </div>
                 </div>
 
-                <div class="project-card reveal">
+                <div class="project-card reveal" data-category="tools">
+                    <div class="project-mockup-header">
+                        <div class="mockup-dots"><span class="mockup-dot dot-red"></span><span class="mockup-dot dot-amber"></span><span class="mockup-dot dot-green"></span></div>
+                        <span class="mockup-title">review-bot · github-actions.yml</span>
+                    </div>
                     <div class="project-header">
-                        <div class="project-icon">🧿</div>
+                        <div class="project-icon">🤖</div>
                         <span class="status-badge badge-live">🟢 Live</span>
                     </div>
                     <div class="project-body">
-                        <h3>BegleriTricks Platform</h3>
-                        <p>Engineered a full-stack content platform from the ground up using Next.js, applying Test-Driven Development (TDD) to guide architecture and implementation. Designed a normalized data model for trick classification, enabling dynamic filtering, tag-based indexing, and fast search across structured datasets. Built scalable routing and a component-driven UI to support progressive, skill-based navigation and content discovery. Ensured reliability through comprehensive testing, including unit, system-level, and mutation testing.</p>
+                        <h3>AI-Powered Code Review Tool</h3>
+                        <div class="project-highlight">🤖 AI PR Analysis · GitHub API · CI/CD</div>
+                        <p>Automated code review system that analyzes pull requests using AI, providing inline feedback on code quality, potential bugs, and style violations. Architected a Python backend that integrates with the GitHub REST API to parse diffs, paired with a TypeScript frontend and GitHub Actions CI/CD automation.</p>
                         <div class="project-tags">
-                            <span class="ptag">Next.js</span>
+                            <span class="ptag">Python</span>
                             <span class="ptag">TypeScript</span>
-                            <span class="ptag">Data Modeling</span>
-                            <span class="ptag">Search & Indexing</span>
-                            <span class="ptag">Dynamic Routing</span>
-                            <span class="ptag">Full-Stack</span>
+                            <span class="ptag">GitHub Actions</span>
+                            <span class="ptag">CI/CD Pipeline</span>
+                            <span class="ptag">REST API</span>
+                            <span class="ptag">DevOps</span>
                         </div>
                     </div>
                     <div class="project-footer">
-                        <a href="https://begleritricks.com" class="project-link">🎯 Visit Site →</a>
+                        <a href="https://github.com/jaidenanders/code-review-tool" target="_blank" rel="noopener noreferrer" class="project-link">GitHub →</a>
                     </div>
                 </div>
 
-                <div class="project-card reveal">
+                <div class="project-card reveal" data-category="algorithms">
+                    <div class="project-mockup-header">
+                        <div class="mockup-dots"><span class="mockup-dot dot-red"></span><span class="mockup-dot dot-amber"></span><span class="mockup-dot dot-green"></span></div>
+                        <span class="mockup-title">ShoppingCartDemo.java</span>
+                    </div>
                     <div class="project-header">
                         <div class="project-icon">🛒</div>
                         <span class="status-badge badge-live">🟢 Live</span>
                     </div>
                     <div class="project-body">
                         <h3>Java OOP Shopping Cart</h3>
+                        <div class="project-highlight">🧪 36 JUnit Tests · All 4 OOP Pillars</div>
                         <p>A fully object-oriented shopping cart built in Java demonstrating all four OOP pillars. Includes a live interactive demo and 36 JUnit-style unit tests.</p>
                         <div class="project-tags">
                             <span class="ptag">Java</span>
@@ -207,17 +365,22 @@
                     </div>
                     <div class="project-footer">
                         <a href="shopping-cart-project.html" class="project-link">🎯 Live Demo →</a>
-                        <a href="https://github.com/jaidenanders/portfolio" class="project-link">GitHub →</a>
+                        <a href="https://github.com/jaidenanders/portfolio" target="_blank" rel="noopener noreferrer" class="project-link">GitHub →</a>
                     </div>
                 </div>
 
-                <div class="project-card reveal">
+                <div class="project-card reveal" data-category="tools">
+                    <div class="project-mockup-header">
+                        <div class="mockup-dots"><span class="mockup-dot dot-red"></span><span class="mockup-dot dot-amber"></span><span class="mockup-dot dot-green"></span></div>
+                        <span class="mockup-title">dedup --dry-run /storage</span>
+                    </div>
                     <div class="project-header">
                         <div class="project-icon">🗂️</div>
                         <span class="status-badge badge-live">🟢 Live</span>
                     </div>
                     <div class="project-body">
                         <h3>CLI File Deduplicator</h3>
+                        <div class="project-highlight">🗂️ SHA-256 Hashing · Recursive Scan</div>
                         <p>A command-line tool that recursively scans directories to detect and remove duplicate files using content hashing. Supports dry-run mode, configurable scan depth, file-type filtering, and detailed scan reports — built for speed and cross-platform use.</p>
                         <div class="project-tags">
                             <span class="ptag">CLI</span>
@@ -228,17 +391,17 @@
                         </div>
                     </div>
                     <div class="project-footer">
-                        <a href="https://github.com/jaidenanders/cli-file-deduplicator" class="project-link">GitHub →</a>
+                        <a href="https://github.com/jaidenanders/cli-file-deduplicator" target="_blank" rel="noopener noreferrer" class="project-link">GitHub →</a>
                     </div>
                 </div>
 
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- EXPERIENCE -->
     <hr class="section-divider">
-    <div id="experience">
+    <section id="experience">
         <div class="section">
             <div class="section-label">03 — Experience</div>
             <h2 class="section-title">Work history</h2>
@@ -247,14 +410,66 @@
                 <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-meta">
-                        <span class="timeline-role">Online Pickup & Delivery Team Lead</span>
-                        <span class="timeline-company">Walmart · Portage, MI</span>
-                        <span class="timeline-date">Dec 2024 – Present</span>
+                        <span class="timeline-role">Stocking 1 & 2 — Coach</span>
+                        <span class="timeline-company">Walmart · Grand Rapids, MI</span>
+                        <span class="timeline-date">July 2026 – Present <span class="role-current-badge">🟢 Current Role</span></span>
+                    </div>
+                    <div class="lead-impact-grid">
+                        <div class="lead-impact-card">
+                            <div class="lead-impact-value">30-Person</div>
+                            <div class="lead-impact-label">Stocking Team Coached</div>
+                        </div>
+                        <div class="lead-impact-card">
+                            <div class="lead-impact-value">97%</div>
+                            <div class="lead-impact-label">On-Shelf Availability</div>
+                        </div>
+                        <div class="lead-impact-card">
+                            <div class="lead-impact-value">2,500+</div>
+                            <div class="lead-impact-label">Truck Items Daily</div>
+                        </div>
+                        <div class="lead-impact-card">
+                            <div class="lead-impact-value">&lt; 2-Hour</div>
+                            <div class="lead-impact-label">Truck Unload Times</div>
+                        </div>
                     </div>
                     <ul class="timeline-body">
-                        <li>Led 40-person team processing 8,000+ items and 350+ orders daily while maintaining operational efficiency</li>
-                        <li>Scaled transaction volume 54% YoY (80K → 123K orders) while reducing average wait time 28%</li>
-                        <li>Increased annual revenue 44% YoY ($6.6M → $9.6M) through optimized order flow and staffing allocation</li>
+                        <li>Coach a 30-person stocking team responsible for freight unload, freight stocking, and inventory accuracy across the backroom and salesfloor</li>
+                        <li>Maintain 97% on-shelf availability while processing trucks of 2,500+ items daily, ensuring product is accurately replenished and represented for customers</li>
+                        <li>Drive unload efficiency to consistently hit sub-2-hour truck unload times, applying process discipline and workflow sequencing to keep freight moving without bottlenecks</li>
+                        <li>Coach and develop associates on standardized stocking procedures, improving consistency, accuracy, and speed across freight-to-shelf execution</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-meta">
+                        <span class="timeline-role">Online Pickup & Delivery — Team Lead</span>
+                        <span class="timeline-company">Walmart · Portage, MI</span>
+                        <span class="timeline-date">Dec 2024 – July 2026</span>
+                    </div>
+                    <div class="lead-impact-grid">
+                        <div class="lead-impact-card">
+                            <div class="lead-impact-value">60-Person</div>
+                            <div class="lead-impact-label">Team Managed at Scale</div>
+                        </div>
+                        <div class="lead-impact-card">
+                            <div class="lead-impact-value">+54%</div>
+                            <div class="lead-impact-label">YoY Orders (80K → 133K)</div>
+                        </div>
+                        <div class="lead-impact-card">
+                            <div class="lead-impact-value">$9.6M</div>
+                            <div class="lead-impact-label">Annual Run-Rate (+44%)</div>
+                        </div>
+                        <div class="lead-impact-card">
+                            <div class="lead-impact-value">-62.3%</div>
+                            <div class="lead-impact-label">Wait Time (8.6m → 3.2m)</div>
+                        </div>
+                    </div>
+                    <ul class="timeline-body">
+                        <li>Managed a 60-person team processing 8,000+ items and 350+ orders daily, maintaining throughput and quality at a scale comparable to running a high-volume production system</li>
+                        <li>Drove 54% year-over-year transaction volume growth (80K to 133K orders) while simultaneously reducing average customer wait time by 62.3% (8.64 min to 3.25 min) through data-informed workflow redesigns and staffing optimization</li>
+                        <li>Delivered 44% year-over-year revenue growth ($6.6M to $9.6M) by identifying and eliminating bottlenecks in order flow, picking efficiency, and staging operations — applying the same root-cause analysis mindset used in software debugging</li>
+                        <li>Designed and implemented team training programs that standardized operating procedures across 60 associates, improving consistency and reducing error rates</li>
                     </ul>
                 </div>
 
@@ -266,110 +481,203 @@
                         <span class="timeline-date">Jul 2024 – Dec 2024</span>
                     </div>
                     <ul class="timeline-body">
-                        <li>Managed front-end team operations and daily workflow efficiency</li>
-                        <li>Resolved customer escalations while maintaining high satisfaction ratings</li>
-                        <li>Implemented operational improvements and coordinated staff training</li>
+                        <li>Supervised a 30-person team across all front-end store operations; coordinated staffing schedules, task delegation, and real-time workflow adjustments to hit daily throughput targets</li>
+                        <li>Led training initiatives in collaboration with store management, building reusable onboarding materials that measurably improved new hire ramp time and team performance consistency</li>
                     </ul>
                 </div>
 
                 <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-meta">
-                        <span class="timeline-role">Gas Station Clerk</span>
-                        <span class="timeline-company">Walmart · Portage, MI</span>
-                        <span class="timeline-date">Jun 2023 – Jul 2024</span>
+                        <span class="timeline-role">Gas Station Clerk / Asset Protection Investigator / Cashier</span>
+                        <span class="timeline-company">Walmart · Paw Paw & Portage, MI</span>
+                        <span class="timeline-date">Jul 2021 – Jun 2024</span>
                     </div>
                     <ul class="timeline-body">
-                        <li>Adhered to strict safety protocols for fuel dispensing and hazardous materials handling</li>
-                        <li>Maintained cleanliness and organization per company standards</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-meta">
-                        <span class="timeline-role">Asset Protection Investigator</span>
-                        <span class="timeline-company">Walmart · Portage, MI</span>
-                        <span class="timeline-date">Jan 2023 – Jun 2023</span>
-                    </div>
-                    <ul class="timeline-body">
-                        <li>Investigated potential theft and policy violations to minimize company loss</li>
-                        <li>Documented and reported incidents with detailed accuracy</li>
-                        <li>Responded professionally to emergency situations involving safety or theft</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-meta">
-                        <span class="timeline-role">Digital Shopper · Cashier · Customer Service</span>
-                        <span class="timeline-company">Walmart · Paw Paw, MI</span>
-                        <span class="timeline-date">Jan 2022 – Jan 2023</span>
-                    </div>
-                    <ul class="timeline-body">
-                        <li>Customer-facing roles emphasizing accuracy, efficiency, and communication</li>
+                        <li>Progressed through three distinct roles — including loss prevention investigation requiring analytical and observational skills — while completing a full Computer Science degree full-time</li>
                     </ul>
                 </div>
 
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- EDUCATION -->
     <hr class="section-divider">
-    <div id="education" style="background:#110A06;">
+    <section id="education" style="background:#110A06;">
         <div class="section">
             <div class="section-label">04 — Education</div>
             <h2 class="section-title">Academic background</h2>
 
             <div class="edu-card reveal">
-                <h3>Bachelor of Science in Computer Science</h3>
-                <div class="edu-meta">Western Michigan University · Graduated December 2025 · GPA 3.19/4.0 · CAC/ABET Accredited</div>
-                <div class="edu-honors">Dean's List — Fall 2024 · Spring 2025 · Summer 2025 · Fall 2025</div>
-                <div class="section-label" style="margin-bottom:0.75rem; margin-top:0.25rem;">Relevant Coursework</div>
-                <div class="coursework-grid">
-                    <div class="course-item">Machine Learning</div>
-                    <div class="course-item">Artificial Intelligence</div>
-                    <div class="course-item">Computer Security & Info Assurance</div>
-                    <div class="course-item">Operating Systems for Cybersecurity</div>
-                    <div class="course-item">Database Management Systems</div>
-                    <div class="course-item">Software Systems Development I & II</div>
-                    <div class="course-item">Design & Analysis of Algorithms</div>
-                    <div class="course-item">Data and File Structures</div>
-                    <div class="course-item">Systems Programming Concepts</div>
-                    <div class="course-item">Network Fundamentals</div>
-                    <div class="course-item">Foundations of Programming Languages</div>
-                    <div class="course-item">Web Technologies</div>
-                    <div class="course-item">Computer Organization & Assembly</div>
-                    <div class="course-item">Regression Analysis</div>
-                    <div class="course-item">Data Analysis Using R</div>
-                    <div class="course-item">Elementary Linear Algebra</div>
+                <div class="edu-header">
+                    <div class="edu-header-left">
+                        <div class="edu-icon" aria-hidden="true">🎓</div>
+                        <div>
+                            <h3>Bachelor of Science in Computer Science</h3>
+                            <div class="edu-institution">Western Michigan University · Kalamazoo, MI</div>
+                            <div class="edu-meta">College of Engineering and Applied Sciences</div>
+                        </div>
+                    </div>
+                    <div class="edu-badges">
+                        <span class="edu-badge-abet" title="Accredited by the Computing Accreditation Commission of ABET">✓ CAC / ABET Accredited</span>
+                        <span class="edu-badge-date">Graduated Dec 2025</span>
+                    </div>
+                </div>
+
+                <div class="edu-metrics-grid">
+                    <div class="edu-metric-card">
+                        <div class="edu-metric-val">3.19</div>
+                        <div class="edu-metric-lbl">Cumulative GPA</div>
+                    </div>
+                    <div class="edu-metric-card">
+                        <div class="edu-metric-val">4x</div>
+                        <div class="edu-metric-lbl">Dean's List Honoree</div>
+                    </div>
+                    <div class="edu-metric-card">
+                        <div class="edu-metric-val">ABET</div>
+                        <div class="edu-metric-lbl">CAC Accredited</div>
+                    </div>
+                    <div class="edu-metric-card">
+                        <div class="edu-metric-val">Dec 2025</div>
+                        <div class="edu-metric-lbl">Degree Conferred</div>
+                    </div>
+                </div>
+
+                <div class="edu-honors-banner">
+                    <div class="edu-honors-star" aria-hidden="true">⭐</div>
+                    <div class="edu-honors-content">
+                        <strong>Dean's List Recognition:</strong> Conferred across 4 consecutive semesters
+                        <span class="edu-honors-semesters">(Fall 2024 · Spring 2025 · Summer 2025 · Fall 2025)</span>
+                    </div>
+                </div>
+
+                <div class="edu-coursework-section">
+                    <div class="edu-coursework-title">Rigorous CS Curricular Focus & Coursework</div>
+                    <div class="edu-tracks-grid">
+                        <div class="edu-track-card">
+                            <div class="edu-track-header">
+                                <span class="edu-track-icon" aria-hidden="true">⚡</span>
+                                <span>Software Systems & Architecture</span>
+                            </div>
+                            <div class="edu-track-chips">
+                                <span class="course-item">Software Systems Development I & II</span>
+                                <span class="course-item">Design & Analysis of Algorithms</span>
+                                <span class="course-item">Data & File Structures</span>
+                                <span class="course-item">Systems Programming Concepts</span>
+                                <span class="course-item">Foundations of Programming Languages</span>
+                                <span class="course-item">Computer Organization & Assembly</span>
+                            </div>
+                        </div>
+
+                        <div class="edu-track-card">
+                            <div class="edu-track-header">
+                                <span class="edu-track-icon" aria-hidden="true">🧠</span>
+                                <span>AI, Machine Learning & Analytics</span>
+                            </div>
+                            <div class="edu-track-chips">
+                                <span class="course-item">Machine Learning</span>
+                                <span class="course-item">Artificial Intelligence</span>
+                                <span class="course-item">Regression Analysis</span>
+                                <span class="course-item">Data Analysis Using R</span>
+                                <span class="course-item">Elementary Linear Algebra</span>
+                            </div>
+                        </div>
+
+                        <div class="edu-track-card">
+                            <div class="edu-track-header">
+                                <span class="edu-track-icon" aria-hidden="true">🛡️</span>
+                                <span>Security, Systems & Databases</span>
+                            </div>
+                            <div class="edu-track-chips">
+                                <span class="course-item">Operating Systems for Cybersecurity</span>
+                                <span class="course-item">Computer Security & Info Assurance</span>
+                                <span class="course-item">Database Management Systems</span>
+                                <span class="course-item">Web Technologies</span>
+                                <span class="course-item">Network Fundamentals</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </div>
-    </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <hr class="section-divider">
+    <section id="certifications">
+        <div class="section">
+            <div class="section-label">05 — Certifications</div>
+            <h2 class="section-title">Credentials & continuous learning</h2>
+            <div class="cert-grid">
+
+                <div class="cert-card reveal">
+                    <div>
+                        <div class="cert-top">
+                            <div class="cert-icon">🎓</div>
+                            <span class="cert-badge-completed">🟢 Completed</span>
+                        </div>
+                        <h3>Google AI Professional Certificate</h3>
+                        <div class="cert-issuer">Google via Coursera · Issued 2026</div>
+                        <p class="cert-desc">Rigorous professional program covering applied machine learning, foundational neural architectures, generative AI models, prompt engineering, and ethical AI integration within production applications.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="ptag">Artificial Intelligence</span>
+                        <span class="ptag">Machine Learning</span>
+                        <span class="ptag">Prompt Engineering</span>
+                        <span class="ptag">Generative AI</span>
+                        <span class="ptag">Google Cloud</span>
+                        <span class="ptag">Coursera</span>
+                    </div>
+                </div>
+
+                <div class="cert-card reveal">
+                    <div>
+                        <div class="cert-top">
+                            <div class="cert-icon">⚡</div>
+                            <span class="cert-badge-progress">⏳ In Progress</span>
+                        </div>
+                        <h3>Advanced Cloud & Systems Specializations</h3>
+                        <div class="cert-issuer">Coursera Technical Tracks · Active Enrollment</div>
+                        <p class="cert-desc">Actively pursuing multiple technical credentials and deep dives across distributed cloud infrastructure, advanced full-stack software architecture, and modern automated DevOps deployment pipelines.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span class="ptag">Cloud Architecture</span>
+                        <span class="ptag">Distributed Systems</span>
+                        <span class="ptag">DevOps & CI/CD</span>
+                        <span class="ptag">Full-Stack Systems</span>
+                        <span class="ptag">Coursera</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- CONTACT -->
     <hr class="section-divider">
-    <div id="contact">
+    <section id="contact" style="background:#110A06;">
         <div class="section">
-            <div class="section-label">05 — Contact</div>
+            <div class="section-label">06 — Contact</div>
             <h2 class="section-title">Let's connect</h2>
             <div class="contact-layout">
                 <div class="contact-aside reveal">
                     <h3>Open to opportunities</h3>
-                    <p>I'm actively looking for full-time software engineering roles. Whether you have a position in mind, want to collaborate, or just want to say hi — my inbox is open.</p>
+                    <p>Based in Grand Rapids, MI. I'm actively looking for full-time software engineering roles. Whether you have a position in mind, want to collaborate, or just want to say hi — my inbox is open.</p>
                     <div class="contact-social-links">
                         <a href="mailto:jaidenanders60@gmail.com" class="social-link">
                             <div class="social-icon">📧</div>
                             jaidenanders60@gmail.com
                         </a>
-                        <a href="https://github.com/jaidenanders" target="_blank" class="social-link">
+                        <button type="button" class="copy-email-btn" id="copyEmailBtn" aria-label="Copy email address to clipboard">
+                            📋 Copy Email Address
+                        </button>
+                        <a href="https://github.com/jaidenanders" target="_blank" rel="noopener noreferrer" class="social-link">
                             <div class="social-icon">💻</div>
                             github.com/jaidenanders
                         </a>
-                        <a href="https://www.linkedin.com/in/jaiden-anders/" target="_blank" class="social-link">
+                        <a href="https://www.linkedin.com/in/jaiden-anders/" target="_blank" rel="noopener noreferrer" class="social-link">
                             <div class="social-icon">💼</div>
                             linkedin.com/in/jaiden-anders
                         </a>
@@ -381,16 +689,16 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Name *</label>
-                                <input type="text" id="name" name="name" placeholder="Your name" required>
+                                <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="company">Company (Optional)</label>
-                            <input type="text" id="company" name="company" placeholder="Where you work">
+                            <input type="text" id="company" name="company" placeholder="Where you work" autocomplete="organization">
                         </div>
                         <div class="form-group">
                             <label for="message">Message *</label>
@@ -401,38 +709,68 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    </main>
 
     <footer>
         <div class="footer-inner">
+            <div class="footer-logo">Jaiden <span>Anders</span></div>
             <p>&copy; 2026 Jaiden Anders — Built with HTML and CSS</p>
             <p><a href="mailto:jaidenanders60@gmail.com">jaidenanders60@gmail.com</a></p>
         </div>
     </footer>
 
+    <!-- BACK TO TOP & TOAST -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
     <script>
-        // Mobile menu toggle
+        // Mobile menu toggle & a11y
         const toggle = document.getElementById('menuToggle');
         const menu = document.getElementById('navMenu');
 
-        toggle.addEventListener('click', () => {
-            toggle.classList.toggle('open');
-            menu.classList.toggle('open');
-            document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+        const toggleMenu = (open) => {
+            const isOpen = typeof open === 'boolean' ? open : !menu.classList.contains('open');
+            toggle.classList.toggle('open', isOpen);
+            menu.classList.toggle('open', isOpen);
+            toggle.setAttribute('aria-expanded', String(isOpen));
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        };
+
+        toggle.addEventListener('click', () => toggleMenu());
+        toggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMenu();
+            }
         });
 
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                toggle.classList.remove('open');
-                menu.classList.remove('open');
-                document.body.style.overflow = '';
-            });
+            link.addEventListener('click', () => toggleMenu(false));
+        });
+
+        // Close mobile menu on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && menu.classList.contains('open')) {
+                toggleMenu(false);
+                toggle.focus();
+            }
+        });
+
+        // Close on click outside
+        document.addEventListener('click', (e) => {
+            if (menu.classList.contains('open') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+                toggleMenu(false);
+            }
         });
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
-                const target = document.querySelector(a.getAttribute('href'));
+                const targetId = a.getAttribute('href');
+                if (targetId === '#' || targetId === '') return;
+                const target = document.querySelector(targetId);
                 if (target) {
                     e.preventDefault();
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -451,6 +789,94 @@
         }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Active navigation scrollspy
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const updateScrollspy = () => {
+            let current = '';
+            const scrollPos = window.pageYOffset + 140;
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const height = section.offsetHeight;
+                if (scrollPos >= top && scrollPos < top + height) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', updateScrollspy, { passive: true });
+        updateScrollspy();
+
+        // Project category filtering
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const projectCards = document.querySelectorAll('.project-card');
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                filterTabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+                const filter = tab.dataset.filter;
+                projectCards.forEach(card => {
+                    const catTokens = (card.dataset.category || '').split(/\s+/);
+                    if (filter === 'all' || catTokens.includes(filter)) {
+                        card.classList.remove('filtered-out');
+                    } else {
+                        card.classList.add('filtered-out');
+                    }
+                });
+            });
+        });
+
+        // Toast notification helper
+        const toast = document.getElementById('toast');
+        let toastTimeout;
+        const showToast = (message) => {
+            if (!toast) return;
+            toast.innerHTML = `<span>✓</span> ${message}`;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        };
+
+        // Copy email button
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        if (copyEmailBtn) {
+            copyEmailBtn.addEventListener('click', async () => {
+                const email = 'jaidenanders60@gmail.com';
+                try {
+                    await navigator.clipboard.writeText(email);
+                    showToast('Email copied to clipboard!');
+                } catch (err) {
+                    window.location.href = `mailto:${email}`;
+                }
+            });
+        }
+
+        // Back to top floating button
+        const backToTopBtn = document.getElementById('backToTop');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 450) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            }, { passive: true });
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
     </script>
 </body>
 </html>
